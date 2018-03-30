@@ -1,0 +1,86 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsSdkVersion
+
+    defaultConfig {
+        applicationId "com.nca.testandroid"
+
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        buildConfigField "String", "API_ENDPOINT", '"Привет от Gradle"'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "typeVersion"//, "store"
+    productFlavors {
+        dev {
+            dimension "typeVersion"
+            buildConfigField "String", "API_URL", "\"http://test\""
+        }
+
+        live {
+            dimension "typeVersion"
+            buildConfigField "String", "API_URL", "\"http://live\""
+
+        }
+
+//        google {
+//            dimension "store"
+//
+//        }
+
+    }
+//    compileOptions {
+//        targetCompatibility 1.8
+//        sourceCompatibility 1.8
+//    }
+
+    dataBinding {
+        enabled = true;
+    }
+}
+
+dependencies {
+
+    def dependency = rootProject.ext.dependencies
+
+    implementation dependency.supportAppcompat
+    implementation dependency.supportV4
+    implementation dependency.supportDesign
+
+    implementation dependency.rx2android
+
+    annotationProcessor dependency.androidBuildingCompiler
+
+    implementation dependency.archComponentsExtension
+    annotationProcessor dependency.archComponentsCompiler
+
+    implementation dependency.room
+    annotationProcessor dependency.roomCompiler
+    annotationProcessor dependency.roomCompilerRx
+
+    implementation dependency.dagger
+    annotationProcessor dependency.daggerCompiler
+
+    api project(path: ':data')
+
+    implementation 'com.github.bumptech.glide:glide:4.6.1'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+
+    implementation 'com.google.code.gson:gson:2.8.2'
+}

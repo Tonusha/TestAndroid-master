@@ -14,6 +14,7 @@ import com.nca.domain.entity.UserEntity;
 import com.nca.domain.interactors.GetUserByIdUseCase;
 import com.nca.executor.UIThread;
 import com.nca.presentation.base.BaseViewModel;
+import com.nca.testandroid.classwork6.UserAdapter;
 import com.nca.testandroid.utils.MyAppGlideModule;
 
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class UserViewModel extends BaseViewModel {
 
     @Inject
     public GetUserByIdUseCase getUserByIdUseCase;
+    public UserAdapter userAdapter = new UserAdapter();
 
 
     //GetUserByIdUseCase getUserByIdUseCase = new GetUserByIdUseCase(new UIThread(), new UserRepositoryImpl());
@@ -63,10 +65,6 @@ public class UserViewModel extends BaseViewModel {
     }
 
     public UserViewModel() {
-
-//            users.add(new UserEntity("Никита", "Кожемяка", "из богатырей", 33, true, "http://oldtale.ru/images/nikita-kojemyaka.jpg"));
-//            users.add(new UserEntity("Варвара", "Краса", "длинная коса", 18, false, "http://tv.akado.ru/images/data/akadotv/picture/imgbig/468702/1.jpg"));
-//            users.add(new UserEntity("Словей", "Разбойник", "бандит", 100, true, "http://www.bestiary.us/files/images/solovey-by-orlova.250x250.jpg"));
 
         getUserByIdUseCase.get("F2DEB8C5-C0FE-30C1-FF5E-F52C286FFF00").subscribe(new Observer<UserEntity>() {
                 @Override

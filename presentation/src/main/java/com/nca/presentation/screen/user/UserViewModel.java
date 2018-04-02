@@ -39,6 +39,8 @@ public class UserViewModel extends BaseViewModel {
 
     @Inject
     public GetUserByIdUseCase getUserByIdUseCase;
+
+
     //GetUserByIdUseCase getUserByIdUseCase = new GetUserByIdUseCase(new UIThread(), new UserRepositoryImpl());
 
     public ObservableInt background = new ObservableInt(Color.WHITE);

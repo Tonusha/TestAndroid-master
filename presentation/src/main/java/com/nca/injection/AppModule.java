@@ -91,7 +91,7 @@ public class AppModule {
 //                .addConverterFactory()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .baseUrl("https://api.backendless.com/FD247E47-9C63-BE0D-FF02-EE6FC26EE800/57954579-3843-763B-FF76-3458E1999F00/")
+                .baseUrl("https://api.backendless.com/4C4D4A50-F9B6-65EB-FFFB-76F895429C00/0A8AF370-113D-95F0-FF4F-AA5DE2EDD500/")
                 .client(okHttpClient())
                 .build();
 //                .baseUrl(BuildConfig.APPLICATION_ID).build();
@@ -100,6 +100,7 @@ public class AppModule {
         // https://api.backendless.com/FD247E47-9C63-BE0D-FF02-EE6FC26EE800/57954579-3843-763B-FF76-3458E1999F00
         // gson подлючит на сайте retrofita
     }
+
 
     @Provides
     @Singleton
